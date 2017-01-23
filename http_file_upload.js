@@ -32,23 +32,13 @@ function upload(req, res) {
     }
 
     // 使用formidable API
-    var form = new formidable.IncomingForm();
+    var form = new formidable.IncomingForm();    
 
-    form.on('field', function(field, value) {
-        console.log(field);
-        console.log(value);
-    });
-
-    form.on('file', function(name, file) {
-        console.log(name);
-        console.log(file);
-    });
-
-    form.on('end', function() {
+    form.parse(req, function(err, fields, files) {
+        console.log(fields);
+        console.log(files);
         res.end('upload complete!');
     });
-
-    form.parse(req);
 }
 
 function isFormData(req)  {
