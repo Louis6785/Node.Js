@@ -12,6 +12,10 @@ var server = http.createServer(function(req, res) {
     var stream = fs.createReadStream(path);
     // res.end()會在stream.pipe()內部調用
     stream.pipe(res);
+    stream.on('error' , function(err) {
+        res.statusCode = 500;
+        res.end('Internal Server Error');
+    });
 });
 
 server.listen(3000);
