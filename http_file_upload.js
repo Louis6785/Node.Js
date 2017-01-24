@@ -12,6 +12,8 @@ var server = http.createServer(function(req, res) {
     }
 });
 
+server.listen(3000);
+
 function show(req, res) {
     var html = '<form method="post" action="/" enctype="multipart/form-data">'
     + '<p><input type="text" name="name" /></p>'
